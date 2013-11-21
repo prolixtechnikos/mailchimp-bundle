@@ -11,6 +11,9 @@
 
 namespace Prolix\MailchimpBundle\Services;
 
+use Buzz\Client\Curl,
+    Buzz\Browser;
+
 /**
  * Sevice Class for MailchimpBundle
  * Main Contact Point For calling all Api Requests
@@ -60,12 +63,12 @@ class MailChimp
     {
         $curl = new Curl();
         foreach ($curlOptions as $key => $option) {
-            $curl->setOption(constant(strtoupper($key)), $value);
+            $curl->setOption(constant(strtoupper($key)), $option);
         }
 
         //to avoid ssl certificate error
         $curl->setVerifyPeer(false);
-        $browser = new Browser($curl);
+        $this->browser = new Browser($curl);
     }
 
     /**
@@ -132,7 +135,7 @@ class MailChimp
      *
      * @return array
      */
-    protected function request($apiCall, $payload)
+    public function request($apiCall, $payload)
     {
         $payload['apikey'] = $this->apiKey;
 

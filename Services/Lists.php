@@ -27,6 +27,11 @@ class Lists
     protected $grouping_id = NULL;
     protected $group_name = NULL;
 
+    public function __construct($mailchimp)
+    {
+        $this->mailchimp = $mailchimp;
+    }
+
     /**
      * set list id
      *

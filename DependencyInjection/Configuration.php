@@ -32,6 +32,8 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('ssl')->defaultTrue()->end()
                 ->arrayNode('curl_options')
                     ->defaultValue(array('curlopt_useragent'=>'ProlixMailchimp'))
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')
                 ->end()
             ->end();
 

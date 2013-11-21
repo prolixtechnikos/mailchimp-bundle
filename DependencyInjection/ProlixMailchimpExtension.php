@@ -29,11 +29,14 @@ class ProlixMailchimpExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('prolix_mailchimp', $configs);
+        $container->setParameter('prolix_mailchimp.default_list', $config['default_list']);
+        $container->setParameter('prolix_mailchimp.api_key', $config['api_key']);
+        $container->setParameter('prolix_mailchimp.ssl', $config['ssl']);
+        $container->setParameter('prolix_mailchimp.curl_options', $config['curl_options']);
 
     }
 

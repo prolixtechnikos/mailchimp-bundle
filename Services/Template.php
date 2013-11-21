@@ -25,6 +25,11 @@ class Template
 
     protected $templateId=null;
 
+    public function __construct($mailchimp)
+    {
+        $this->mailchimp = $mailchimp;
+    }
+
     /**
      * Set template id
      *

@@ -1,0 +1,19 @@
+parameters:
+    prolix.mailchimp.class: Prolix\MailchimpBundle\Services\MailChimp
+    prolix.mailchimp.campaign.class: Prolix\MailchimpBundle\Services\Campaign
+    prolix.mailchimp.list.class: Prolix\MailchimpBundle\Services\Lists
+    prolix.mailchimp.template.class: Prolix\MailchimpBundle\Services\Template
+
+services:
+    mailchimp:
+        class: %prolix.mailchimp.class%
+        arguments: ["@service_container"]
+    mailchimp.list:
+        class: %prolix.mailchimp.list.class%
+        arguments: ["@mailchimp"]
+    mailchimp.campaign:
+        class: %prolix.mailchimp.campaign.class%
+        arguments: ["@mailchimp"]
+    mailchimp.template:
+        class: %prolix.mailchimp.template.class%
+        arguments: ["@mailchimp"]
